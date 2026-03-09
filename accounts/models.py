@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    id = models.AutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True, null=False)
     fullname = models.CharField(max_length=150, blank=True)
     email_pessoal = models.EmailField(max_length=150, blank=True)
     email_academico = models.EmailField( max_length=150, blank=False)
