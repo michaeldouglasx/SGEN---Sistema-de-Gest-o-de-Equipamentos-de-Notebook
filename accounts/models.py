@@ -1,3 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class User(AbstractUser):
+    id = models.AutoField(primary_key=True)
+    fullname = models.CharField(max_length=150, blank=True)
+    email_pessoal = models.EmailField(max_length=150, blank=True)
+    email_academico = models.EmailField( max_length=150, blank=False)
+    phone = models.CharField(blank=False, max_length= 15, help_text="Formato (61) 9 9888-7777", verbose_name="Telefone de contato" )
+    
+    def __str__(self):
+        return self.fullname
