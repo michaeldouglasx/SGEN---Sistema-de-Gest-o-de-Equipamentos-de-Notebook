@@ -1,5 +1,4 @@
 from django.db import models
-BRANDS = [ ("Acer", "Acer"), ("DELL", "Dell"),("APPLE","Apple"), ("VAIO", "Vaio"), ("AVELL","Avell"), ("ALIENWARE","Alienware"), ("Samsung","Samsung"), ("HP","HP"), ("ASUS","Asus") ]
 
 COLORS = [
     ("PRETO", "Preto"), ("CINZA", "Cinza"), 
@@ -11,13 +10,27 @@ STATUS = [
     ("MANUTENCAO", "Manutenção"),
     ("EMPRESTADO", "Emprestado"),
 ]
+class Brand(models.Model):
+    id = models.AutoField(primary_key=True,null=False)
+    brand = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.brand
+    class Meta:
+        verbose_name = 'Marca'
+
+
 
 class Notebook(models.Model):
     numero_patrimonio = models.CharField(blank=False, max_length=6, unique=True, verbose_name="Nº Patrimônio")
-    marca= models.CharField(max_length=20, choices=BRANDS)
+    marca= models.ForeignKey(Brand, on_delete=models.PROTECT)
     cor = models.CharField(max_length=30,  choices=COLORS)
     modelo = models.CharField(max_length=50)
     status = models.CharField(max_length=15, choices=STATUS, default="DISPONIVEL")
 
+
     def __str__(self):
         return f"{self.numero_patrimonio} - {self.marca}"
+    class meta:
+        verbose_name = 'Notebook'
+
