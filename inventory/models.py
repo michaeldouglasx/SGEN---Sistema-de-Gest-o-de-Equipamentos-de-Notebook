@@ -1,4 +1,5 @@
 from django.db import models
+from loans.models import Loans
 
 COLORS = [
     ("PRETO", "Preto"), ("CINZA", "Cinza"), 
@@ -31,6 +32,14 @@ class Notebook(models.Model):
 
     def __str__(self):
         return f"{self.numero_patrimonio} - {self.marca}"
-    class meta:
+    class Meta:
         verbose_name = 'Notebook'
+
+    @property
+    def aluno_atual(self):
+        if self.status == "EMPRESTADO":
+            emprestimo = Loans.objects.filter(notebook=self, data_devolucao__isnull=True).last()
+            return emprestimo.aluno.fullname if emprestimo else "NÃO IDENTIFICADO"
+        return '-'
+
 

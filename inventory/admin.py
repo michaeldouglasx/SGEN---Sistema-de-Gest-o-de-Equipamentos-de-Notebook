@@ -4,9 +4,11 @@ from .models import Notebook, Brand
 @admin.register(Notebook)
 class NotebookAdmin(admin.ModelAdmin):
 
-    list_display = ('numero_patrimonio', 'marca',  'modelo', 'status', 'cor', )
-    list_filter = ('numero_patrimonio', 'status')
+    list_display = ('numero_patrimonio', 'marca',  'modelo', 'cor','status', 'aluno_atual' )
+    list_filter = ('status', 'marca')
     search_fields = ('numero_patrimonio',)
+    readonly_fields = ('status',)
+
 
 
 @admin.register(Brand)

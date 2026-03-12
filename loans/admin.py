@@ -10,6 +10,7 @@ class LoansAdmin(admin.ModelAdmin):
     fields = ('aluno', 'notebook', 'carregador', 'data_retirada', 'data_devolucao')
     list_filter = ('data_retirada', 'carregador')
     date_hierarchy = 'data_retirada'
+    
 
 
     
