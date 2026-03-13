@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 class Loans(models.Model):
     aluno = models.ForeignKey("accounts.User", on_delete=models.CASCADE, verbose_name="Aluno" )
@@ -22,6 +23,17 @@ class Loans(models.Model):
             self.notebook.status = 'DISPONIVEL'
         self.notebook.save()
         super().save(*args, **kwargs)
+
+    def clean(self):
+        if not self.pk and self.notebook.status in ["EMPRESTADO", "MANUTENCAO"]:
+            raise ValidationError("NOTEBOOK: Notebook não está disponível")
+        if not self.pk:
+            ja_possui_emprestimo = Loans.objects.filter(aluno=self.aluno, data_devolucao__isnull=True).exists()
+        if ja_possui_emprestimo:
+            raise ValidationError("ALUNO: Aluno possui empréstimo ativo")
+        
+
+
         
 
 

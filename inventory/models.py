@@ -1,6 +1,7 @@
 from django.db import models
 from loans.models import Loans
 
+
 COLORS = [
     ("PRETO", "Preto"), ("CINZA", "Cinza"), 
     ("BRANCO", "Branco"), ("PRATA", "Prata")
@@ -41,5 +42,7 @@ class Notebook(models.Model):
             emprestimo = Loans.objects.filter(notebook=self, data_devolucao__isnull=True).last()
             return emprestimo.aluno.fullname if emprestimo else "NÃO IDENTIFICADO"
         return '-'
+    
+    
 
 
