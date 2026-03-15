@@ -1,6 +1,7 @@
 from django.urls import path
 from ..views.LoginView import Login_View
 from ..views.CadastroView import Cadastro_View
+from ..views.ReservaView import Reserva_View
 
 
 urlpatterns = [
