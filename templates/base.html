@@ -1,17 +1,22 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SGEN{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
+
 <body>
 
     <header class="topo">
         <div class="container-nav">
-            <a class="logo" href="{% url 'login' %}">SGEN</a>
+            <div class="logo-area">
+                <img src="{% static '/images/logoPronta.png' %}" alt="Logo SGEN">
+                <a class="logo" href="{% url 'login' %}">SGEN</a>
+            </div>
             <nav>
                 <ul class="menu">
                     <li><a href="{% url 'login' %}">Login</a></li>
@@ -29,4 +34,5 @@
     </main>
 
 </body>
+
 </html>

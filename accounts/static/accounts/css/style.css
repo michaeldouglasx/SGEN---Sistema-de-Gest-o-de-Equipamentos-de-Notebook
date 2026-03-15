@@ -183,3 +183,23 @@ body {
         padding: 22px 16px;
     }
 }
+
+/* AREA DA LOGO (imagem + texto SGEN) */
+.logo-area{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* IMAGEM DA LOGO */
+.logo-area img{
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* TEXTO SGEN AO LADO DA LOGO */
+.logo-area .logo{
+    display: flex;
+    align-items: center;
+}
