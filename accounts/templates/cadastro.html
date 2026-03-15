@@ -1,37 +1,47 @@
-{% extends "base.html" %}
-{%block title%} Cadastro - SGEN {%endblock%}
+{% extends 'base.html' %}
 
-{%block content%}
+{% block title %}Cadastro | SGEN{% endblock %}
 
+{% block content %}
+<section class="card card-cadastro">
+    <h2>Cadastro SGEN</h2>
+    <p class="descricao">Preencha os dados abaixo para criar sua conta.</p>
 
+    <form method="post" class="formulario-padrao">
+        {% csrf_token %}
+        
+        <div class="campo">
+            <label>Nome Completo:</label>
+            {{ formulario.fullname }}
+        </div>
 
-<form method="post">
-{%csrf_token%}
-    <div class="input-group">
-        <label for="{{ formulario.fullname.id_for_label }}">Nome Completo:</label>
-        {{ formulario.fullname }}
-        {{ formulario.fullname.errors }}
-    </div>
+        <div class="campo">
+            <label>E-mail Pessoal:</label>
+            {{ formulario.email_pessoal }}
+        </div>
 
-    <div class="input-group">
-        <label>E-mail Institucional:</label>
-        {{ formulario.email_academico }}
-        {{ formulario.email_academico.errors }}
-    </div>
+        <div class="campo">
+            <label>E-mail Institucional:</label>
+            {{ formulario.email_academico }}
+        </div>
 
-    <div class="input-group">
-        <label>Telefone de Contato:</label>
-        {{ formulario.phone }}
-        {{ formulario.phone.errors }}
-    </div>
+        <div class="campo">
+            <label>Telefone:</label>
+            {{ formulario.phone }}
+        </div>
 
-    <div class="input-group">
-        {{ formulario.password.label_tag }}
-        {{ formulario.password }}   ''
-        {{ formulario.password.errors }}
-    </div>
-    
+        <div class="campo">
+            <label>Senha:</label>
+            {{ formulario.password }}
+        </div>
 
-    <button type="submit">Finalizar Cadastro</button>
+        {% if formulario.errors %}
+        <div class="mensagem-erro">
+            {{ formulario.errors }}
+        </div>
+        {% endif %}
 
+        <button type="submit" class="btn-principal">Finalizar Cadastro</button>
+    </form>
+</section>
 {% endblock %}

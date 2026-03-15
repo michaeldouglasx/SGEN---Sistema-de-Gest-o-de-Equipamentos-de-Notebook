@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva | SGEN{% endblock %}
+
+{% block content %}
+<section class="card card-reserva">
+	<h2>Reserva de Equipamento</h2>
+	<p class="descricao">Solicite um notebook informando os dados da reserva.</p>
+
+	<form method="post" class="formulario-padrao" action="#">
+		{% csrf_token %}
+
+		<div class="campo">
+			<label for="id_equipamento">Equipamento</label>
+			<input id="id_equipamento" type="text" name="equipamento" placeholder="Ex: Notebook Dell 5410" required>
+		</div>
+
+		<div class="campo">
+			<label for="id_data">Data da Reserva</label>
+			<input id="id_data" type="date" name="data_reserva" required>
+		</div>
+
+		<div class="campo">
+			<label for="id_periodo">Período</label>
+			<select id="id_periodo" name="periodo" required>
+				<option value="">Selecione</option>
+				<option value="manha">Manhã</option>
+				<option value="tarde">Tarde</option>
+				<option value="noite">Noite</option>
+				<option value="integral">Integral</option>
+			</select>
+		</div>
+
+		<div class="campo">
+			<label for="id_observacoes">Observações</label>
+			<textarea id="id_observacoes" name="observacoes" rows="4" placeholder="Informe detalhes adicionais"></textarea>
+		</div>
+
+		<button type="submit" class="btn-principal">Confirmar Reserva</button>
+	</form>
+</section>
+{% endblock %}

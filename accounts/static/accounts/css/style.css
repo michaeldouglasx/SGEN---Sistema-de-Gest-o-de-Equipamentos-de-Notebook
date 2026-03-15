@@ -1,92 +1,185 @@
-/* Configurações Gerais */
 :root {
-    --primary-color: #2c3e50; /* Azul escuro corporativo */
-    --secondary-color: #27ae60; /* Verde (referência ao IBAMA/SGEN) */
-    --error-color: #e74c3c;    /* Vermelho para erros */
-    --bg-color: #f4f7f6;
-    --text-color: #333;
+    --cor-fundo: #eef2f8;
+    --cor-superficie: #ffffff;
+    --cor-texto: #1f2937;
+    --cor-texto-secundario: #4b5563;
+    --cor-borda: #d7deea;
+    --cor-primaria: #0f4c81;
+    --cor-primaria-hover: #0b3b64;
+    --cor-erro-fundo: #fdecec;
+    --cor-erro-texto: #a31621;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--cor-texto);
+    background: linear-gradient(160deg, #eef2f8 0%, #dfe8f5 100%);
 }
 
-/* Container do Formulário */
-.form-container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 450px;
+.topo {
+    background: #0f2f4c;
+    border-bottom: 3px solid #0f4c81;
 }
 
-h2 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+.container-nav {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    gap: 24px;
 }
 
-/* Grupos de Input */
-.input-group {
-    margin-bottom: 1.2rem;
+.logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-/* Estilizando os Inputs do Django */
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não estoure a largura */
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-    border-color: var(--secondary-color);
-    outline: none;
-}
-
-/* Mensagens de Erro */
-.errorlist {
-    color: var(--error-color);
+.menu {
     list-style: none;
+    display: flex;
+    gap: 18px;
+    margin: 0;
     padding: 0;
-    margin: 5px 0 0 0;
-    font-size: 0.85rem;
-    font-weight: bold;
 }
 
-/* Botão de Enviar */
-.btn-submit {
+.menu a {
+    color: #dbeafe;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: #ffffff;
+}
+
+.area-principal {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+}
+
+.container-conteudo {
     width: 100%;
-    padding: 12px;
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 1rem;
+    max-width: 560px;
 }
 
-.btn-submit:hover {
-    background-color: #219150;
+.card {
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 47, 76, 0.12);
+    padding: 28px 24px;
+}
+
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+}
+
+.descricao {
+    margin: 0 0 20px;
+    color: var(--cor-texto-secundario);
+}
+
+.formulario-padrao {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    border: 1px solid #cfd7e5;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.98rem;
+    color: var(--cor-texto);
+    background: #fbfdff;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+}
+
+.btn-principal {
+    margin-top: 6px;
+    border: none;
+    border-radius: 8px;
+    background: var(--cor-primaria);
+    color: #ffffff;
+    padding: 11px 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-principal:hover {
+    background: var(--cor-primaria-hover);
+}
+
+.mensagem-erro {
+    border: 1px solid #f4bbbb;
+    background: var(--cor-erro-fundo);
+    color: var(--cor-erro-texto);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 680px) {
+    .container-nav {
+        min-height: auto;
+        padding: 12px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .area-principal {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .card {
+        padding: 22px 16px;
+    }
 }
