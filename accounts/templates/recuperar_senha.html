@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%content block%}
+
+
+<section class="card card-login">
+    <h2>Recuperar Senha</h2>
+    <p class="descricao"></p>
+
+    <form method="post" class="formulario-padrao" action="#">
+        {% csrf_token %}
+
+        <div class="campo">
+            <label for="id_login">Email</label>
+            <input id="id_login" type="text" name="login" placeholder="Digite seu usuário" required>
+        </div>
+
+        <button type="submit" class="btn-principal">Enviar</button>
+    </form>
+</section>
+
+
+
+{%endblock%}

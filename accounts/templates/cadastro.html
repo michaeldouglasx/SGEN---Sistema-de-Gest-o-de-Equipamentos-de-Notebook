@@ -35,11 +35,27 @@
             {{ formulario.password }}
         </div>
 
+        <div class="campo">
+            <label>Confirmar Senha:</label>
+            {{ formulario.confirm_password }}
+        </div>
+
+    {% if formulario.non_field_errors %}
+    <div class="alerta-erro">
+        {% for erro in formulario.non_field_errors %}
+            <p>{{ erro }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
         {% if formulario.errors %}
         <div class="mensagem-erro">
             {{ formulario.errors }}
         </div>
         {% endif %}
+
+
 
         <button type="submit" class="btn-principal">Finalizar Cadastro</button>
     </form>
