@@ -3,8 +3,8 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 class Loans(models.Model):
-    aluno = models.ForeignKey("accounts.User", on_delete=models.CASCADE, verbose_name="Aluno" )
-    notebook = models.ForeignKey("inventory.Notebook", on_delete=models.CASCADE, verbose_name="Notebook")
+    aluno = models.ForeignKey("accounts.User", on_delete=models.PROTECT, verbose_name="Aluno" )
+    notebook = models.ForeignKey("inventory.Notebook", on_delete=models.PROTECT, verbose_name="Notebook")
     carregador = models.BooleanField(default=False)
     data_retirada = models.DateTimeField(auto_now_add=True, verbose_name="Data de Retirada")
     data_devolucao= models.DateTimeField(null=True,blank=True, verbose_name="Data de Devolução")
@@ -29,8 +29,9 @@ class Loans(models.Model):
             raise ValidationError("NOTEBOOK: Notebook não está disponível")
         if not self.pk:
             ja_possui_emprestimo = Loans.objects.filter(aluno=self.aluno, data_devolucao__isnull=True).exists()
-        if ja_possui_emprestimo:
-            raise ValidationError("ALUNO: Aluno possui empréstimo ativo")
+            if ja_possui_emprestimo:
+                raise ValidationError("ALUNO: Aluno possui empréstimo ativo")
+            
         
 
 

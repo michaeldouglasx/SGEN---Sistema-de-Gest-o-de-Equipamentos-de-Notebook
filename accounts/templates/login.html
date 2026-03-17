@@ -12,12 +12,12 @@
 
         <div class="campo">
             <label for="id_login">Usuário</label>
-            <input id="id_login" type="text" name="login" placeholder="Digite seu usuário" required>
+            {{login_form.username}} 
         </div>
 
         <div class="campo">
             <label for="id_password">Senha</label>
-            <input id="id_password" type="password" name="password" placeholder="Digite sua senha" required>
+            {{login_form.password}}
         </div>
 
         <button type="submit" class="btn-principal">Entrar</button>
