@@ -3,20 +3,26 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 
+
 def Login_View(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
+        login_form = AuthenticationForm(request, data=request.POST)
 
-        if user is not None:
-            login(request, user)
-            return redirect('reserva')
-        else:
-            login_form = AuthenticationForm()
-            return render(request,'login.html', {'login_form': login_form})
-            
+        if login_form.is_valid():
+            user = login_form.get_user()
+            login(request,user)
+
+            url_destino = 'admin:index' if user.is_superuser else 'reserva'
+            return redirect(url_destino)
+        print(login_form.errors)
+        login_form.errors.clear()
+        login_form.add_error(None, 'Usuário ou senha inválidos!')
     else:
-        login_form = AuthenticationForm()
-        return render(request,'login.html', {'login_form': login_form})
-    
+            login_form = AuthenticationForm()
+
+    return render(request, 'login.html', {'login_form': login_form})
+
+
+
+
+

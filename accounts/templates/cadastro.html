@@ -11,13 +11,13 @@
         {% csrf_token %}
         
         <div class="campo">
-            <label>Nome Completo:</label>
-            {{ formulario.fullname }}
+            <label>Nome:</label>
+            {{ formulario.first_name }}
         </div>
 
-        <div class="campo">
-            <label>E-mail Pessoal:</label>
-            {{ formulario.email_pessoal }}
+         <div class="campo">
+            <label>Sobrenome:</label>
+            {{ formulario.last_name }}
         </div>
 
         <div class="campo">

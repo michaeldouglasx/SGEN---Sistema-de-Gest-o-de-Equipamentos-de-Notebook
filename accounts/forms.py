@@ -2,9 +2,9 @@ from django import forms
 from accounts.models import User
 
 class CadastroForm(forms.Form):
-    fullname = forms.CharField(max_length=150)
-    email_pessoal = forms.EmailField(max_length=150)
-    email_academico = forms.EmailField( max_length=150 )
+    first_name = forms.CharField(max_length=150)
+    last_name = forms.CharField(max_length=150)
+    email_academico = forms.EmailField(max_length=150)
     phone = forms.CharField(max_length=15)
     password = forms.CharField(
         widget=forms.PasswordInput,
@@ -18,12 +18,16 @@ class CadastroForm(forms.Form):
 
     def save(self):
         user = User(
-            fullname = self.cleaned_data['fullname'],
-            email_pessoal = self.cleaned_data['email_pessoal'],
+            first_name = self.cleaned_data['first_name'],
+            last_name = self.cleaned_data['last_name'],
             email_academico = self.cleaned_data['email_academico'],
             phone = self.cleaned_data['phone'],
             username =self.cleaned_data['email_academico']
         )
+
+        user.is_staff = False
+        user.is_superuser = False
+
         senha = self.cleaned_data.get("password")
         user.set_password(senha)
         user.save()

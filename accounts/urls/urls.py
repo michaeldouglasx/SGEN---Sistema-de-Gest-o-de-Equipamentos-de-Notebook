@@ -9,6 +9,7 @@ urlpatterns = [
     path('login/', Login_View, name='login'),
     path('cadastro/', Cadastro_View, name='cadastro'),
     path('reserva/', Reserva_View, name='reserva'),
-    path('logout/', Logout_View, name='logout')
+    path('logout/', Logout_View, name='logout'),
+    path('recuperar_senha/', Logout_View, name='recuperar_senha')
 
 ]

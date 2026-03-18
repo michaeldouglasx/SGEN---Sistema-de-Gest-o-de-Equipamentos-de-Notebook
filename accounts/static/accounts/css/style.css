@@ -189,6 +189,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    justify-content: space-between
 }
 
 /* IMAGEM DA LOGO */
@@ -196,10 +197,34 @@ body {
     height: 40px;
     width: auto;
     display: block;
+    justify-content: space-between
+    
 }
 
 /* TEXTO SGEN AO LADO DA LOGO */
 .logo-area .logo{
     display: flex;
     align-items: center;
+    
+}
+
+.opcao {
+    color: #530342;
+    display: flex;
+    gap: 300px
+}
+
+.opcao:active{
+    font-size: 15px;
+}
+
+.sair{
+    color: #eef2f8;
+    font-style: italic;
+    
+}
+.alerta-erro {
+    color: #a31621;
+    font-size: 20px;
+    
 }
